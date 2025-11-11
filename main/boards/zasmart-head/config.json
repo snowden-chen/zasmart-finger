@@ -1,0 +1,9 @@
+{
+    "target": "esp32s3",
+    "builds": [
+        {
+            "name": "zasmart-head",
+            "sdkconfig_append": []
+        }
+    ]
+}

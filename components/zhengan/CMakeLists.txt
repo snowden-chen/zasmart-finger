@@ -1,0 +1,25 @@
+idf_build_get_property(project_dir PROJECT_DIR)
+
+idf_component_register(SRCS "zhengan.c"
+                            "za_common.c"
+                            "za_wifi/za_wifi.c"
+                            "za_upgrade/za_upgrade.c"
+                            "za_aiot/za_aiot.c"
+                            "za_aiot/za_aiot_mqtt.c"
+                            "za_aiot/za_aiot_mqtts.c"
+                            "za_aiot/za_aiot_mqttlocal.c"
+                            "za_info/za_info.c"
+                            "za_storage/za_storage.c"
+                            "za_command/za_command.c"
+                            "za_command/cmd_gamectrl.c"
+                            "za_command/cmd_systminr.c"
+                            "za_command/cmd_upgradei.c"
+                            "za_command/cmd_common.c"
+                            "za_innersor/za_innersor.c"
+                            "za_system/za_system.c"
+                            "za_json/za_json.c"
+                            "za_app/za_appext.c"
+                            "za_aiosm/za_aiosm.c"
+                    INCLUDE_DIRS "include"
+                    EMBED_TXTFILES ${project_dir}/server_certs/ca_cert.pem
+                    REQUIRES nvs_flash bt app_update console vfs fatfs mqtt json spiffs esp_hw_support esp_http_client esp_https_ota)
