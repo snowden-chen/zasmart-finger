@@ -3,7 +3,9 @@
 #include "display/oled_display.h"
 #include "application.h"
 #include "button.h"
+//#include "led/circular_strip.h"
 #include "led/single_led.h"
+//#include "led/gpio_led.h"
 #include "assets/lang_config.h"
 #include "config.h"
 #include "settings.h"
@@ -283,7 +285,6 @@ private:
                 //app.StartListening();
                 app.ToggleChatState();
             }
-
         });
 
         main_button_.OnDoubleClick([this]() {
@@ -565,6 +566,8 @@ public:
     virtual Led* GetLed() override 
     {
         static SingleLed led(BUILTIN_LED_GPIO);
+        //static GpioLed led(BUILTIN_LED_GPIO);
+        //static CircularStrip led(BUILTIN_LED_GPIO, 1);
         return &led;
 
         //static NoLed led;

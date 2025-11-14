@@ -214,11 +214,11 @@ ZA_VOID za_inner_LM_GpioAdapterInit( ZA_VOID *pvParameters )
 
     gpio_reset_pin(ZA_INNER_POWER_CTRL_GPIO);
     gpio_reset_pin(ZA_INNER_POWER_KEY_GPIO);
-    gpio_reset_pin(ZA_INNER_STATUS_LED_A_GPIO);
+    //gpio_reset_pin(ZA_INNER_STATUS_LED_A_GPIO);
     gpio_reset_pin(ZA_INNER_PEN_CTRL_GPIO);
 
     gpio_set_direction(ZA_INNER_POWER_CTRL_GPIO, GPIO_MODE_OUTPUT);
-    gpio_set_direction(ZA_INNER_STATUS_LED_A_GPIO, GPIO_MODE_OUTPUT);
+    //gpio_set_direction(ZA_INNER_STATUS_LED_A_GPIO, GPIO_MODE_OUTPUT);
     gpio_set_direction(ZA_INNER_PEN_CTRL_GPIO, GPIO_MODE_OUTPUT);
 
     gpio_set_direction(ZA_INNER_POWER_KEY_GPIO, GPIO_MODE_INPUT);
