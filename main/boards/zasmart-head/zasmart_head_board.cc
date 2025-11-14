@@ -297,6 +297,14 @@ private:
             char presskeyStr[64];
             snprintf(presskeyStr, sizeof(presskeyStr), "tyzbtn:D_M_KEY %u", power_manager_->GetBatteryLevel());
             app.SendPressKeyToServer(pressVer,presskeyStr);
+
+            auto codec = GetAudioCodec();
+            auto volume = codec->output_volume();
+            if (volume < 92)
+            {
+                volume = 92;
+                codec->SetOutputVolume(volume);
+            }
         });
 
         vol_up_button_.OnClick([this]() {
@@ -536,9 +544,9 @@ public:
         gpio_set_direction(POWER_CONTROL_GPIO, GPIO_MODE_OUTPUT);
         gpio_set_level(POWER_CONTROL_GPIO, 1);
 
-        gpio_reset_pin(BUILTIN_LED_GPIO);
-        gpio_set_direction(BUILTIN_LED_GPIO, GPIO_MODE_OUTPUT);
-        gpio_set_level(BUILTIN_LED_GPIO, 1);
+        //gpio_reset_pin(BUILTIN_LED_GPIO);
+        //gpio_set_direction(BUILTIN_LED_GPIO, GPIO_MODE_OUTPUT);
+        //gpio_set_level(BUILTIN_LED_GPIO, 1);
 
         InitializeShockManager();
         
@@ -556,11 +564,11 @@ public:
 
     virtual Led* GetLed() override 
     {
-        //static SingleLed led(BUILTIN_LED_GPIO);
-        //return &led;
-
-        static NoLed led;
+        static SingleLed led(BUILTIN_LED_GPIO);
         return &led;
+
+        //static NoLed led;
+        //return &led;
     }
 
     virtual AudioCodec* GetAudioCodec() override 

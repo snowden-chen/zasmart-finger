@@ -11,5 +11,5 @@ set(PROJECT_VER "1.9.40")
 add_compile_options(-Wno-missing-field-initializers)
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
-project(zasmartpen-dev)
+project(zasmartfinger-dev)
 
