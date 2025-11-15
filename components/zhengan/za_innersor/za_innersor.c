@@ -257,7 +257,8 @@ ZA_VOID za_inner_LM_PowerManagerInit( ZA_VOID *pvParameters )
     (ZA_VOID) pvParameters;
 
     gpio_set_level(ZA_INNER_POWER_CTRL_GPIO, 1);
-    gpio_set_level(ZA_INNER_PEN_CTRL_GPIO, 0);
+    //gpio_set_level(ZA_INNER_PEN_CTRL_GPIO, 0); // for pen
+    gpio_set_level(ZA_INNER_PEN_CTRL_GPIO, 1); // for finger
 
     return;
 }

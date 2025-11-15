@@ -568,11 +568,11 @@ public:
         //static SingleLed led(BUILTIN_LED_GPIO);
         //static GpioLed led(BUILTIN_LED_GPIO);
 
-        //static CircularStrip led(BUILTIN_LED_GPIO, 1);
-        //return &led;
-
-        static NoLed led;
+        static CircularStrip led(BUILTIN_LED_GPIO, 1);
         return &led;
+
+        //static NoLed led;
+        //return &led;
     }
 
     virtual AudioCodec* GetAudioCodec() override 
