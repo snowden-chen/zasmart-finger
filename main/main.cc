@@ -100,8 +100,7 @@ extern "C" void app_main(void)
     //for test by zach snowden chen
     //za_storage_get_calibra_param1(ZANULL);
     //za_storage_get_calibra_param2(ZANULL);
-
-
+    
     if ( za_aiosm_init() != ZA_TRUE )
     {
          vTaskDelay(ZA_pdMS_TO_TICKS(20));

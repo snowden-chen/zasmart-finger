@@ -270,24 +270,24 @@ ZA_VOID za_inner_led_wifi_status( ZA_BOOL bIfConnected )
     {
         if (sbWifiLedShinkCtrl)
         {
-            gpio_set_level(ZA_INNER_STATUS_LED_A_GPIO, (sbIfWifiShink ? 0 : 1));
+            //gpio_set_level(ZA_INNER_STATUS_LED_A_GPIO, (sbIfWifiShink ? 0 : 1));
             sbIfWifiShink = ! sbIfWifiShink;
         }
         else
         {
-            gpio_set_level(ZA_INNER_STATUS_LED_A_GPIO, 1);
+            //gpio_set_level(ZA_INNER_STATUS_LED_A_GPIO, 1);
         }
     }
     else
     {   
         if (sbWifiLedShinkCtrl)
         {
-            gpio_set_level(ZA_INNER_STATUS_LED_A_GPIO, (sbIfWifiShink ? 0 : 1));
+            //gpio_set_level(ZA_INNER_STATUS_LED_A_GPIO, (sbIfWifiShink ? 0 : 1));
             sbIfWifiShink = ! sbIfWifiShink;
         }
         else
         {
-            gpio_set_level(ZA_INNER_STATUS_LED_A_GPIO, 0);
+            //gpio_set_level(ZA_INNER_STATUS_LED_A_GPIO, 0);
         }
     }
 
