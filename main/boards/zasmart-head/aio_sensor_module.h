@@ -34,6 +34,8 @@ public:
     void SaveCalibrationData();
 
     const AioData& GetAioData() const;
+    const int& GetAioIndex() const;
+    void ClearAioIndex();
 
 
 
@@ -56,6 +58,7 @@ private:
     void DelayMs(uint16_t ms);
 
     AioData aio_data_;
+    int aio_index_;
 
     //AioSensorCallback callback_;
     //std::mutex callback_mutex_;

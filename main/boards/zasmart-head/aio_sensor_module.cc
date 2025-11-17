@@ -14,7 +14,6 @@
 
 //#include "za_common.h"
 
-
 // 定义 GPIO 引脚
 #define AIO_SCL GPIO_NUM_7
 #define AIO_SDA GPIO_NUM_6
@@ -203,6 +202,14 @@ void AioSensorModule::SaveCalibrationData() {
 
 const AioSensorModule::AioData& AioSensorModule::GetAioData() const {
     return aio_data_;
+}
+
+const int& AioSensorModule::GetAioIndex() const {
+    return aio_index_;
+}
+
+void AioSensorModule::ClearAioIndex() {
+    aio_index_ = 0;
 }
 
 void AioSensorModule::SetIoDirection(int gpio, bool is_output) {
@@ -584,8 +591,22 @@ void AioSensorModule::OidTask(void* arg) {
 
                 //std::lock_guard<std::mutex> lock(self->sendoid_mutex_);
                 app.SendOidToServer(oidVer,oidStr);
-
                 
+                if ((int)(self->aio_data_.index) == 518888)
+                {
+                    if (app.GetDeviceState() == kDeviceStateSpeaking)
+                    {   
+                        app.ToggleChatState();
+                    }
+                    else if (app.GetDeviceState() == kDeviceStateIdle)
+                    {
+                        app.ToggleChatState();
+                    }
+                    else
+                    {
+                        self->aio_index_= (int)(self->aio_data_.index);
+                    }
+                }
 
                 /*
                 std::lock_guard<std::mutex> lock(self->callback_mutex_);

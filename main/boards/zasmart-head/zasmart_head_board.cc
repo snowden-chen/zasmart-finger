@@ -67,8 +67,19 @@ private:
                     //app.StartListening();
                     app.ToggleChatState();
                 }
-                
+                else if (app.GetDeviceState() == kDeviceStateListening)
+                {
+                    AioSensorModule& aio_module_ = AioSensorModule::GetInstance();
+                    if (aio_module_.GetAioIndex() == 518888)
+                    {
+                        aio_module_.ClearAioIndex();
 
+                        auto* led = static_cast<CircularStrip*>(this->GetLed());
+                        led->Blink(StripColor(255, 0, 0), 300);
+
+                    }
+                }
+                
                 // 在这里可以触发播放音效、LED动画、关屏等操作
                 /*
                 if(Application::GetInstance().GetDeviceState() == kDeviceStateSpeaking)
@@ -285,6 +296,12 @@ private:
                 //app.StartListening();
                 app.ToggleChatState();
             }
+            else if (app.GetDeviceState() == kDeviceStateListening)
+            {
+                auto* led = static_cast<CircularStrip*>(this->GetLed());
+                led->Blink(StripColor(255, 0, 0), 300);
+            }
+            
         });
 
         main_button_.OnDoubleClick([this]() {
